@@ -1,7 +1,11 @@
 package org.smart4j.chapter2.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.smart4j.chapter2.hlper.DatabaseHelper;
 import org.smart4j.chapter2.model.Customer;
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
@@ -10,17 +14,23 @@ import java.util.Map;
  */
 public class CustomerService {
 
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
+
+
     /**
      * 获取客户列表
      */
     public List<Customer> getCustomerList() {
-        return null;
+        Connection connection = DatabaseHelper.getConnection();
+        String sql = "SELECT * FROM customer";
+        return DatabaseHelper.queryEntityList(Customer.class, connection, sql);
     }
 
     /**
      * 获取客户
      */
-    public List<Customer> getCustomer(long id) {
+    public Customer getCustomer(long id) {
         return null;
     }
 

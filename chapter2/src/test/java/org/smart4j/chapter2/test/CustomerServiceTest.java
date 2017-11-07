@@ -11,19 +11,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * CustomerSrevice 单元测试
+ * CustomerService 单元测试
  */
 public class CustomerServiceTest {
 
     private final CustomerService customerService;
-    private long id;
 
     public CustomerServiceTest() {
         customerService = new CustomerService();
     }
 
     @Before
-    public void init() {
+    public void init() throws Exception {
         //初始化数据库
     }
 
@@ -36,30 +35,34 @@ public class CustomerServiceTest {
     @Test
     public void getCustomerTest() throws Exception {
         long id = 1;
-        List<Customer> customer = customerService.getCustomer(id);
+        Customer customer = customerService.getCustomer(id);
         Assert.assertNotNull(customer);
     }
 
     @Test
     public void createCustomerTest() throws Exception {
         Map<String, Object> fieldMap = new HashMap<>();
-        fieldMap.put("name", "customer100");
+        fieldMap.put("name", "coustomer100");
         fieldMap.put("contact", "John");
-        fieldMap.put("telephone", "18890792903");
-        Assert.assertTrue(customerService.createCustomer(fieldMap));
+        fieldMap.put("telephone", "13412345678");
+        fieldMap.put("email", "John@gmail.com");
+        boolean result = customerService.createCustomer(fieldMap);
+        Assert.assertTrue(result);
     }
 
     @Test
-    public void updateCustomerTest() throws Exception {
-        id = 1;
+    public void updateCoustomerTest() throws Exception {
+        long id = 1;
         Map<String, Object> fieldMap = new HashMap<>();
         fieldMap.put("contact", "Eric");
-        Assert.assertTrue(customerService.updateCustomer(id, fieldMap));
+        boolean result = customerService.updateCustomer(id, fieldMap);
+        Assert.assertTrue(result);
     }
 
     @Test
     public void deleteCustomerTest() throws Exception {
-        id = 1;
-        Assert.assertTrue(customerService.deleteCustomer(id));
+        long id = 1;
+        boolean result = customerService.deleteCustomer(id);
+        Assert.assertTrue(result);
     }
 }
