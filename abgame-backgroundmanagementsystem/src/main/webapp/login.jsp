@@ -63,7 +63,18 @@
             $.ajax({
                 type: "POST",
                 url: "userinfo/login.action",
-                data: $("#loginForm").serialize()
+                data: $("#loginForm").serialize(),   //序列化
+                error: function (request) {      // 设置表单提交出错
+                    $("#showMsg").html(request);  //登录错误提示信息
+                },
+                success: function (data) {
+                    if (data != null) {
+                        document.location = "userinfo/index.action";
+                    } else {
+                        $("#showMsg").html("用户名或密码输入有误，请重新输入");
+                    }
+
+                }
             });
         }
     }
