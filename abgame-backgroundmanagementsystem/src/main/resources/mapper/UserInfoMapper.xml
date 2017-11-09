@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fengjin.dao.UserInfoDao">
+    <resultMap type="com.fengjin.entity.UserInfoEntity"
+               id="UserInfoMap">
+        <id column="id" property="id"/>
+        <result column="nickname" property="nickname"/>
+        <result column="registrationtime" property="registrationtime"/>
+        <result column="registrationip" property="registrationip"/>
+        <result column="attribution" property="attribution"/>
+        <result column="system" property="system"/>
+        <result column="operator" property="operator"/>
+        <result column="onlinestatus" property="onlinestatus"/>
+        <result column="accountstatus" property="accountstatus"/>
+        <result column="lastlogintime" property="lastlogintime"/>
+        <result column="rechargetime" property="rechargetime"/>
+        <result column="rechargeamount" property="rechargeamount"/>
+        <result column="rechargetimes" property="rechargetimes"/>
+        <result column="rechargemethod" property="rechargemethod"/>
+        <result column="exchangetimes" property="exchangetimes"/>
+        <result column="exchangeingots" property="exchangeingots"/>
+        <result column="gameroom" property="gameroom"/>
+        <result column="accountremainingingots" property="accountremainingingots"/>
+        <result column="accountremaininggold" property="accountremaininggold"/>
+        <result column="saferemaininggold" property="saferemaininggold"/>
+        <result column="saferemainingingot" property="saferemainingingot"/>
+        <result column="createtime" property="createtime"/>
+        <result column="updatetime" property="updatetime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+    <select id="getUserInfoList" resultMap="UserInfoMap">
+        SELECT * FROM userinfo
+    </select>
+
+</mapper>
