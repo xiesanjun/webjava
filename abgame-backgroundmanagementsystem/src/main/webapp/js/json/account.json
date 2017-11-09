@@ -1,0 +1,6 @@
+{
+			"total":3,"rows":[
+				{"id":"1","accounttime":"2017-09-18 11:55","userid":"123456","accounttype":"转入","accountid":"456789","account":"88888888","box":"88888888","status":"成功","lasttime":"2017-09-18 12:55"},
+                {"id":"2","accounttime":"2017-09-18 11:55","userid":"123456","accounttype":"转出","accountid":"456789","account":"88888888","box":"88888888","status":"成功","lasttime":"2017-09-18 12:55"}
+			]
+	}

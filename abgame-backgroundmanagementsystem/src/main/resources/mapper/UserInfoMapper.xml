@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.fengjin.dao.UserInfoDao">
     <resultMap type="com.fengjin.entity.UserInfoEntity"
                id="UserInfoMap">
@@ -31,6 +30,7 @@
         <result column="updatetime" property="updatetime"/>
         <result column="deleted" property="deleted"/>
     </resultMap>
+    <!--查询用户信息列表-->
     <select id="getUserInfoList" resultMap="UserInfoMap">
         SELECT * FROM userinfo
     </select>

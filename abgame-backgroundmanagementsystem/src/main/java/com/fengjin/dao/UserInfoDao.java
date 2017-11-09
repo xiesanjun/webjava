@@ -8,5 +8,9 @@ import java.util.List;
 @Repository
 public interface UserInfoDao {
 
+    public abstract UserInfoEntity login(UserInfoEntity entity);
+
     public abstract List<UserInfoEntity> getUserInfoList();
+
+
 }

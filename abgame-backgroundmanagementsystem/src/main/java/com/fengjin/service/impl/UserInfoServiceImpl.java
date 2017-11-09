@@ -1,7 +1,10 @@
 package com.fengjin.service.impl;
 
+import com.fengjin.dao.UserDao;
 import com.fengjin.dao.UserInfoDao;
+import com.fengjin.entity.UserEntity;
 import com.fengjin.entity.UserInfoEntity;
+import com.fengjin.model.LoginModel;
 import com.fengjin.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,28 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserInfoDao userInfoDao;
+
+    @Autowired
+    private UserDao userDao;
+
+
+    /**
+     * 登陆
+     *
+     * @param model
+     * @return
+     */
+    @Override
+    public String login(LoginModel model) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUserName(model.getLogin());
+        userEntity.setLoginToken(model.getPassword());
+        UserEntity entity = userDao.login(userEntity);
+        if (entity != null) {
+            return "index";
+        }
+        return null;
+    }
 
     @Override
     public List<UserInfoEntity> userManager() {

@@ -20,7 +20,6 @@
     <!-- 配置数据源 -->
     <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
-        <property name="driver" value="${jdbc_driverClassName}"/>
         <property name="url" value="${jdbc_url}"/>
         <property name="username" value="${jdbc_username}"/>
         <property name="password" value="${jdbc_password}"/>
@@ -68,7 +67,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.paymentcenter.repository"/>
+        <property name="basePackage" value="com.fengjin.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
     <!-- 事务配置 -->

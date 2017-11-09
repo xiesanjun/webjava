@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fengjin.dao.UserDao">
+    <resultMap type="com.fengjin.entity.UserEntity"
+               id="UserMap">
+        <id column="id" property="id"/>
+        <result column="p_id" property="pid"/>
+        <result column="s_user_name" property="userName"/>
+        <result column="s_phone" property="phone"/>
+        <result column="s_union_id" property="unionId"/>
+        <result column="s_avatar" property="avatar"/>
+        <result column="s_nickname" property="nickname"/>
+        <result column="u_vip_level" property="vipLevel"/>
+        <result column="d_vip_end_time" property="vipEndTime"/>
+        <result column="u_ingot" property="ingot"/>
+        <result column="u_golds" property="golds"/>
+        <result column="u_total_gold" property="totalGold"/>
+        <result column="u_state" property="state"/>
+        <result column="u_loginToken" property="loginToken"/>
+    </resultMap>
+    <!--用户登录-->
+    <select id="login" parameterType="com.fengjin.entity.UserEntity" resultMap="UserMap">
+        SELECT * FROM user
+        <where>
+            <if test="userName!=null">
+                and s_user_name=#{userName}
+            </if>
+            <if test="loginToken!=null">
+                and u_loginToken=#{loginToken}
+            </if>
+        </where>
+    </select>
+
+</mapper>
