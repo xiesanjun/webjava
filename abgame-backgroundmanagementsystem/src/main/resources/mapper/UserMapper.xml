@@ -25,12 +25,7 @@
     <select id="login" parameterType="com.fengjin.entity.UserEntity" resultMap="UserMap">
         SELECT * FROM user
         <where>
-            <if test="userName!=null">
-                and s_user_name=#{userName}
-            </if>
-            <if test="loginToken!=null">
-                and u_loginToken=#{loginToken}
-            </if>
+            s_user_name=#{userName} and u_loginToken=#{loginToken}
         </where>
     </select>
 

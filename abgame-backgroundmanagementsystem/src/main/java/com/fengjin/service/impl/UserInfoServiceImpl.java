@@ -32,13 +32,20 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserEntity userEntity = new UserEntity();
         userEntity.setUserName(model.getLogin());
         userEntity.setLoginToken(model.getPassword());
+        System.out.println(model.getLogin());
+        System.out.println(model.getPassword());
         UserEntity entity = userDao.login(userEntity);
         if (entity != null) {
-            return "index";
+            return "success";
         }
         return null;
     }
 
+    /**
+     * 获取用户信息列表
+     *
+     * @return List<UserInfoEntity>
+     */
     @Override
     public List<UserInfoEntity> userManager() {
         return userInfoDao.getUserInfoList();

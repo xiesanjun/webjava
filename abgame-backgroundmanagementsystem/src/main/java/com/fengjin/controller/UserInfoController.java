@@ -19,19 +19,16 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @RequestMapping(value = "userinfo")
-    public ModelAndView userInfoList() {
-        List<UserInfoEntity> userInfoEntityList = userInfoService.userManager();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        modelAndView.addObject("userInfoEntityList", userInfoEntityList);
-        return modelAndView;
-    }
-
     //登陆
     @ResponseBody
     @RequestMapping(value = "login.action")
     public String login(LoginModel model) {
         return userInfoService.login(model);
+    }
+
+    //跳转首页
+    @RequestMapping(value = "index.action")
+    public String gameindex() {
+        return "index";
     }
 }

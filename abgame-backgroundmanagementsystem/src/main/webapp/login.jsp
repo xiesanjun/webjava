@@ -56,7 +56,7 @@
 
     function login() {
         if ($("input[name='login']").val() == "" || $("input[name='password']").val() == "") {
-            $("#showMsg").html("用户名或密码为空，请输入");
+            $("#showMsg").html("用户名或密码为空，请重新输入");
             $("input[name='login']").focus();
         } else {
             //ajax异步提交
@@ -68,12 +68,11 @@
                     $("#showMsg").html(request);  //登录错误提示信息
                 },
                 success: function (data) {
-                    if (data != null) {
+                    if (data != "") {
                         document.location = "userinfo/index.action";
                     } else {
                         $("#showMsg").html("用户名或密码输入有误，请重新输入");
                     }
-
                 }
             });
         }
