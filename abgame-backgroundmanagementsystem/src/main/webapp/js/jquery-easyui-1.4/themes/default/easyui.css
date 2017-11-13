@@ -2331,10 +2331,10 @@
   background: url('images/tree_icons.png') no-repeat -160px 0;
 }
 .tree-folder {
-  background: url('images/tree_icons.png') no-repeat -208px 0;
+  background: url('images/tree_icons.png') no-repeat -208px 0;/*树形结构 关闭状态下图标*/
 }
 .tree-folder-open {
-  background: url('images/tree_icons.png') no-repeat -224px 0;
+  background: url('images/tree_icons.png') no-repeat -224px 0;/*树形结构 开启状态下图标*/
 }
 .tree-file {
   background: url('images/tree_icons.png') no-repeat -240px 0;

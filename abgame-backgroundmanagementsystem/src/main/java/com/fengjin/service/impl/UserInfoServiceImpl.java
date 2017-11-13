@@ -4,11 +4,16 @@ import com.fengjin.dao.UserDao;
 import com.fengjin.dao.UserInfoDao;
 import com.fengjin.entity.UserEntity;
 import com.fengjin.entity.UserInfoEntity;
+import com.fengjin.model.DataGrid;
 import com.fengjin.model.LoginModel;
 import com.fengjin.service.UserInfoService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -19,6 +24,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private HttpServletRequest request;
 
 
     /**
@@ -36,6 +44,8 @@ public class UserInfoServiceImpl implements UserInfoService {
         System.out.println(model.getPassword());
         UserEntity entity = userDao.login(userEntity);
         if (entity != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("entity", entity);
             return "success";
         }
         return null;
@@ -47,7 +57,25 @@ public class UserInfoServiceImpl implements UserInfoService {
      * @return List<UserInfoEntity>
      */
     @Override
-    public List<UserInfoEntity> userManager() {
+    public List<UserInfoEntity> getUserInfoList() {
         return userInfoDao.getUserInfoList();
+    }
+
+    /**
+     * 分页
+     *
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public DataGrid getUserList(Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+        List<UserInfoEntity> userInfoList = getUserInfoList();
+        PageInfo<UserInfoEntity> pageInfo = new PageInfo<UserInfoEntity>(userInfoList);
+        DataGrid dataGrid = new DataGrid();
+        dataGrid.setTotal(pageInfo.getTotal());
+        dataGrid.setRows(userInfoList);
+        return dataGrid;
     }
 }

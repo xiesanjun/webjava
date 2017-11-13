@@ -1,5 +1,9 @@
 package com.fengjin.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fengjin.util.DateUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class UserInfoEntity extends BaseEntity {
     /**
      * 用户ID
